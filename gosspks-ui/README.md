@@ -1,5 +1,1 @@
-### Start the app
-
-  $ npm install && npm start
-
-The app should be available on localhost:8080
+# gosspks-ui: A React frontend for [gosspks](https://github.com/jdel/gosspks)
