@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '8'
+install:
+- cd gosspks-ui
+- npm install --no-optional
+script:
+- npm run build:dist
+notifications:
+  slack:
+    secure: HXtfYQ2hhb1J3zxYNs0ltUoHYfmCP9oQcJ/gFPyxtM6WAa+8ukhS6Fo6S5yKEuoUFauIemTdIaGiTKSWu2hvpulbzkNnahmFfJvcAtaX/4lvPDf1qLtlRQ5OW50JCgZk8KhJ9Ppm7O7TIzgZ5aq96bzkvTAQ5MTsb09fNhcKClVf9VpZu6rUshqKAOYt88/2G/fBwTmVZ5Xb0Wt5zK7EXLOcVXuoIlGZX2bi6uXLEm4/+RoF+dA85PHK5i4C38TAUokd5+B0bLqgX5plj1yzq8V6hbW+DVZC4QCN5JLPTcGL2n+Ox947rNimB8McO91Ly6MK0H186qkUI6lLEMHWCOQ+9Ieaoa7xnuNE6VX0lX34L0UgkaWldbHFIsH5rBFjhnCqOASm3Lzqpd81bCr0NSiCYEAevWHV32Jp0/S7y7rYnpDleCtQCE7x2euYjNwKg3THqoPPrHVlHhW0Ufq4N5n59jFxpfWvepeTInBNeD4jp9InBN927ndY9k5N25aJH5nwnBXxmFy4N5Rc/YX8sK6cFeUgv6P6ZCo2u9C8RG/fhWrI8SKWcREtjxkRMjoE9/b4wIvLMjC+pK3SAu5fB7HLRPIwMapuUNTPuYfJWmEZYlkHF70XjXfhXqb28bD/5vS4vee0UbB5x5f+Uqqyub4yVbmUZQX0F0G89D28gLQ=

@@ -1,0 +1,9 @@
+[template]
+src = "default.conf.tmpl"
+dest = "/etc/nginx/conf.d/default.conf"
+keys = [
+    "GOSSPKS_UI_HOSTNAME",
+    "GOSSPKS_URL",
+    "GOSSPKS_STATIC",
+    "GOSSPKS_DOWNLOAD",
+]

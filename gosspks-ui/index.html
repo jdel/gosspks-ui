@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{{ getenv "GOSSPKS_UI_TITLE" "GoSSPKS" }}</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+    <% if (htmlWebpackPlugin.files.favicon) { %>
+    <link rel="shortcut icon" href="<%=htmlWebpackPlugin.files.favicon%>">
+    <% } %>
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%=htmlWebpackPlugin.files.css %>" rel="stylesheet">
+    <% } %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<% if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
+<style>.unsupported-browser {
+    display: none;
+}</style>
+<div class="unsupported-browser">
+    Sorry, your browser is not supported. Please upgrade to
+    the latest version or switch your browser to use this site.
+    See <a href="http://outdatedbrowser.com/">outdatedbrowser.com</a>
+    for options.
+</div>
+<% } %>
+<h2 class="ui icon center aligned header" style="padding-top: 2em;">
+    <i aria-hidden="true" class="yellow dropbox icon"></i>
+    <div class="content">{{ getenv "GOSSPKS_UI_HEADER" "GoSSPKS" }}</div>
+</h2>
+{{ $syno_url := or (getenv "GOSSPKS_UI_SYNO_URL") "" }}
+{{ if ne $syno_url "" }}
+<div class="ui icon message info" style="width: 70%; margin:0 auto;">
+  <i aria-hidden="true" class="server icon"></i>
+  <div class="content">
+  <div class="header">
+    Protip
+  </div>
+  <p>Install packages directly by adding {{ $syno_url }} to your Package Center sources.</p>
+  </div>
+</div>
+{{ end }}
+<% if (htmlWebpackPlugin.options.appMountId) { %>
+<div id="<%=htmlWebpackPlugin.options.appMountId%>" style="padding: 0 0 5em 0;"></div>
+<% } %>
+<% if (htmlWebpackPlugin.options.appMountIds && htmlWebpackPlugin.options.appMountIds.length > 0) { %>
+<% for (var index in htmlWebpackPlugin.options.appMountIds) { %>
+<div id="<%=htmlWebpackPlugin.options.appMountIds[index]%>"></div>
+<% } %>
+<% } %>
+<% if (htmlWebpackPlugin.options.devServer) { %>
+<script src="<%=htmlWebpackPlugin.options.devServer%>/webpack-dev-server.js"></script>
+<% } %>
+{{ $google_analytics_token := or (getenv "GOSSPKS_UI_GA_TOKEN") "" }}
+{{ if ne $google_analytics_token "" }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $google_analytics_token }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ $google_analytics_token }}');
+</script>
+{{ end }}
+{{ $no_footer := or (getenv "GOSSPKS_UI_NO_FOOTER") "" }}
+{{ if ne $no_footer "TRUE" }}
+<footer class="ui message" style="width: 100%; position: fixed; bottom: 0px; margin: 0;">
+  <i aria-hidden="true" class="large grey github icon"></i>
+  Powered by <a href="https://github.com/jdel/gosspks">GoSSPKS</a> + <a href="https://github.com/jdel/gosspks-ui">UI</a>
+</footer>
+{{ end }}
+</body>
+</html>

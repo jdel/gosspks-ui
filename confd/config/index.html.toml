@@ -1,0 +1,10 @@
+[template]
+src = "index.html.tmpl"
+dest = "/usr/share/nginx/html/index.html"
+keys = [
+    "GOSSPKS_UI_TITLE",
+    "GOSSPKS_UI_HEADER",
+    "GOSSPKS_UI_GA_TOKEN",
+    "GOSSPKS_UI_SYNO_URL",
+    "GOSSPKS_UI_NO_FOOTER",
+]
